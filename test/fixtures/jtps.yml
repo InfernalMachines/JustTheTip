@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  base_country: MyString
+  base_state_abbr: MyString
+  base_state: MyString
+  base_tip: 9.99
+
+two:
+  base_country: MyString
+  base_state_abbr: MyString
+  base_state: MyString
+  base_tip: 9.99

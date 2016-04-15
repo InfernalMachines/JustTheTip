@@ -1,0 +1,12 @@
+ToDo
+Phase I
+	1. Research API
+	2. Access Currency
+	3. Location Tracker
+
+	4. Figure conversion using native users currency as base currency
+	5. Currency exchange algorithm
+
+----------- Change --------
+
+
