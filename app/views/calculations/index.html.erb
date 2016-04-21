@@ -1,0 +1,27 @@
+
+
+
+
+<%= form_tag('/tip-query', method: 'post') do %>
+  <%=text_field_tag :amount %>
+  
+   <%= select_tag("state", options_for_select( @select_state ))  %>
+   <%= select_tag("srv", options_for_select(@service))  %>
+
+ 	
+  <%= submit_tag :submit %>
+<% end %>
+<div>Amount: <%=number_to_currency(@amount, precision: 2)%></div>
+<div>Based on the national average tipping for <%=@state%> is  <%=number_to_percentage(@national_average, precision: 2)%></div>
+<div>Based on your experience you should tip: <%=number_to_percentage(@current_srv, precision: 2)%></div>
+<div>Tip Total: <%=number_to_currency(@tipTotal, precision: 2)%></div>
+
+
+<div>Bill Total: <%=number_to_currency(@recipt, precision: 2)%></div>
+
+
+<%=debug (params)%>
+
+
+
+

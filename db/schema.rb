@@ -11,9 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414193501) do
+ActiveRecord::Schema.define(version: 20160420220232) do
 
-  create_table "jtps", force: :cascade do |t|
+  create_table "services", force: :cascade do |t|
+    t.string   "general_service"
+    t.decimal  "service_tip_overide"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "usadbs", force: :cascade do |t|
     t.string   "base_country"
     t.string   "base_state_abbr"
     t.string   "base_state"

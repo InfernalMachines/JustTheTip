@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
+  root 'calculations#index'
 
-  get 'states/index'
+  post '/tip-query' => 'calculations#tip_query'
 
-  root 'home#index'
-
-  get 'currency/index'
+  resources :calculations
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
