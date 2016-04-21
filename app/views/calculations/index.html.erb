@@ -1,27 +1,31 @@
-
-
-
-
 <%= form_tag('/tip-query', method: 'post') do %>
-  <%=text_field_tag :amount %>
+  <%=number_field_tag :amount, value=@amount%>
   
-   <%= select_tag("state", options_for_select( @select_state ))  %>
-   <%= select_tag("srv", options_for_select(@service))  %>
-
+   <%= select_tag("state", options_for_select( @select_state,:selected=>params[:state]  ))  %>
+   <%= select_tag("srv", options_for_select(@service,:selected=>params[:srv] ))%>
  	
   <%= submit_tag :submit %>
 <% end %>
 <div>Amount: <%=number_to_currency(@amount, precision: 2)%></div>
-<div>Based on the national average tipping for <%=@state%> is  <%=number_to_percentage(@national_average, precision: 2)%></div>
-<div>Based on your experience you should tip: <%=number_to_percentage(@current_srv, precision: 2)%></div>
+<div>Based on the national average tipping for <%=@state%> is  <%=number_to_percentage(@national_average, precision: 2)%>
+
+</div>
+<div>Based on your experience you should tip: 
+	<% if (@current_id == 1) %>
+		<%=number_to_percentage(@current_srv, precision: 2)%>
+	<% elsif (@current_id == 2) %>
+		<%=number_to_percentage(@tip, precision: 2)%>
+	<% elsif (@current_id == 3) %>
+		<%=number_to_percentage(@current_srv, precision: 2)%>
+	<% elsif (@current_id == 4) %>
+		<%=number_to_currency(@small_tip, precision: 2)%>
+	<%end%>
+
+</div>
 <div>Tip Total: <%=number_to_currency(@tipTotal, precision: 2)%></div>
-
-
 <div>Bill Total: <%=number_to_currency(@recipt, precision: 2)%></div>
 
-
 <%=debug (params)%>
-
 
 
 

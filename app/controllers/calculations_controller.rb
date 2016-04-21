@@ -11,11 +11,10 @@ class CalculationsController < ApplicationController
     @current_srv = current_srv.service_tip_overide
     @current_id = current_srv.id
     
-    apple = current_srv
-
     @select_state = Usadb.pluck(:base_state,:id)  
     amount=params[:amount]
     tip_base = Usadb.find(params[:state])
+    @tip_base = tip_base
 
      #finds tip in database
     @state = tip_base.base_state #finds States in database
@@ -31,6 +30,7 @@ class CalculationsController < ApplicationController
     elsif (@current_id == 4)
       no_srv = @current_srv * 10
       revise_tip = no_srv
+      @small_tip = no_srv
     end
 
     states_calc(amount,revise_tip)
@@ -39,11 +39,14 @@ class CalculationsController < ApplicationController
 
   def states_calc(amount,revise_tip)
     @amount = amount
+    if (@current_id == 4)
+          @tipTotal = revise_tip + amount.to_i
+        else
   	@tipTotal = revise_tip * amount.to_i
   	recipt = @tipTotal + amount.to_i
   	@recipt = recipt
-
   	return recipt
+  end
   end
 
  
