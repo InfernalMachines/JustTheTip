@@ -1,4 +1,4 @@
-class CalculationsController < ApplicationController
+class LocalController < ApplicationController
  
   def index
     @select_state = Usadb.pluck(:base_state,:id)
@@ -32,28 +32,21 @@ class CalculationsController < ApplicationController
       revise_tip = no_srv
       @small_tip = no_srv
     end
-
     states_calc(amount,revise_tip)
     render 'index'
   end
 
-  def states_calc(amount,revise_tip)
+def states_calc(amount,revise_tip)
     @amount = amount
     if (@current_id == 4)
-          @tipTotal = revise_tip + amount.to_i
+          @rev_total = revise_tip + amount.to_f
         else
-  	@tipTotal = revise_tip * amount.to_i
-  	recipt = @tipTotal + amount.to_i
+  	@tipTotal = revise_tip * amount.to_f
+  	recipt = @tipTotal + amount.to_f
   	@recipt = recipt
   	return recipt
   end
-  end
-
+end
  
-  def currency_exchange
-    uri = URI("https://openexchangerates.org/api/latest.json?app_id=0ccb5c5d253345f5b4e51ac6ab815fd3&base=USD")
-    #uri = URI("http://www.apilayer.net/api/live?access_key=05cee63cbf4c339e875c5a5a969fb5bf&format=1")
-    response = JSON.parse(Net::HTTP.get(uri))
-  end
-
+  
 end

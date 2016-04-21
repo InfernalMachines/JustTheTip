@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420220232) do
+ActiveRecord::Schema.define(version: 20160421184626) do
+
+  create_table "intdbs", force: :cascade do |t|
+    t.string   "country_name"
+    t.string   "curr_name"
+    t.string   "iso"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "services", force: :cascade do |t|
     t.string   "general_service"
