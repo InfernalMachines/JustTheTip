@@ -1,5 +1,5 @@
 <%= form_tag('/tip-query', method: 'post') do %>
-<%=number_to_currency(number_field_tag :amount, value=@amount, precision: 2)%>
+<%=number_to_currency(text_field_tag :amount, value=@amount, precision: 2) %>
   <%= select_tag("state", options_for_select( @select_state,:selected=>params[:state] ))  %>
   <%= select_tag("srv", options_for_select(@service,:selected=>params[:srv]))%>
   <%= submit_tag :submit %>

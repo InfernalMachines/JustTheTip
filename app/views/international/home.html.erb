@@ -1,3 +1,29 @@
 <h1>International#home</h1>
-<p>Find me in app/views/international/home.html.erb</p>
-<%= @response %>
+
+<%= form_tag('/world-tipping', method: 'post') do %>
+<%=number_to_currency(text_field_tag :amount, value=@amount, precision: 2) %>
+  <%= select_tag("country", options_for_select( @data_ctry_select,:selected=>params[:country] ))  %>
+  <!-- find a way to limit initial view to 20 or so at a time or text search populate -->
+<%= submit_tag :submit %>
+<% end %>
+
+<br /> Test Return Value of DB ISO PULL = @iso <br />
+<br />
+1: Currency Exchange as of 04/23/2016: <%= @iso_rate %><br />
+2: Dollar Amount: <%= @amount %><br />
+3: Foreign Currency: <%= @total_in_dollars %><br />
+
+<br />
+
+
+<br />
+TEST API KEY PULL = @api_key_iso<br />
+2: <%=@api_key_iso%>
+<br />
+
+<br />
+COMPARE All<br />
+3: <%=@new_key%>
+
+<%=debug (params)%>
+<%= console %>
